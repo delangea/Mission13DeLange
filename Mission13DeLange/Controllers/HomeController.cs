@@ -11,6 +11,12 @@ namespace Mission13DeLange.Controllers
 {
     public class HomeController : Controller
     {
+        private IBowlerRepository _context;
+
+        public HomeController(IBowlerRepository temp)
+        {
+            _context = temp;
+        }
         public IActionResult Index()
         {
             return View();
