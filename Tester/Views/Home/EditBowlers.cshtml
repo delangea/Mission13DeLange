@@ -1,0 +1,51 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Edit";
+}
+
+@model Bowler
+@if (!ViewBag.IsEdit)
+{
+    <h2 class="text-center">Create New Bowler</h2>
+}
+else
+{
+    <h2 class="text-center">Edit Bowler</h2>
+}
+
+<div class="d-flex flex-column align-items-center">
+    <div class="text-danger" asp-validation-summary="All"></div>
+    <form class="mx-5" method="post" action="EditBowlers">
+        <div style="display:grid; grid-template-columns: 1fr 1.25fr; grid-template-rows: auto; grid-row-gap: 1rem; grid-column-gap: 2rem;">
+            <input type="hidden" asp-for="@Model.BowlerID" />
+            <span>First Name</span>
+            <input type="text" asp-for="@Model.BowlerFirstName" class="form-select" />
+            <span>Middle Initial</span>
+            <input type="text" asp-for="@Model.BowlerMiddleInit" class="form-select" />
+            <span>Last Name</span>
+            <input type="text" asp-for="@Model.BowlerLastName" class="form-select" />
+            <span>Address</span>
+            <input type="text" asp-for="@Model.BowlerAddress" class="form-select" />
+            <span>City</span>
+            <input type="text" asp-for="@Model.BowlerCity" class="form-select" />
+            <span>State</span>
+            <input type="text" asp-for="@Model.BowlerState" class="form-select" />
+            <span>Zip</span>
+            <input type="text" asp-for="@Model.BowlerZip" class="form-select" />
+            <span>Phone Number</span>
+            <input type="text" asp-for="@Model.BowlerPhoneNumber" class="form-select" />
+            <span>Team</span>
+            <select asp-for="@Model.TeamID" class="form-control">
+                @foreach (var t in ViewBag.Teams)
+                {
+                    <option value="@t.TeamID">@t.TeamName</option>
+                }
+            </select>
+        </div>
+        <div class="d-flex justify-content-center mt-3">
+            <button type="submit" class="btn btn-primary">Save</button>
+        </div>
+    </form>
+</div>
